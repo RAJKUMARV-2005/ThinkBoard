@@ -3,6 +3,8 @@ import notesRoutes from "./routes/notesRoutes.js"
 import dotenv from "dotenv"
 import { connectDB } from "./config/db.js"
 import rateLimiter from "./middleware/rateLimiter.js"
+import cors from "cors";
+
 dotenv.config()
 
 const app=express();
@@ -17,6 +19,7 @@ app.use(express.json());
 
 app.use(rateLimiter);
 
+app.use(cors());
 
 app.use("/api/notes",notesRoutes);
 
